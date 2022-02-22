@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;700&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat',
+        sans-serif;
+}
+
+.grid-number {
+    text-align: center;
+    margin: 1rem;
+    font-size: 1.5rem;
+}
+
+h1 {
+    font-size: 4rem;
+    text-align: center;
+    margin-top: 2.25rem;
+    font-weight: 700;
+}
+
+/** Buttons **/
+
+button {
+    width: 15rem;
+    border: none;
+    color: white;
+    background-color: black;
+    padding: .7rem 1rem;
+    border-radius: .5rem;
+    margin: 1rem;
+    font-size: 1.2rem;
+}
+
+.buttons {
+    max-height: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/** Grid Sample **/
+
+.sketch {
+    border: .5rem double black;
+    width: 600px;
+    height: 600px;
+    max-height: 600px;
+    margin: 2rem auto;
+    display: grid;
+    /* grid-template-columns: repeat(8, 1fr); needs to be adjusted 8*8=64; root number! */
+    /* grid-auto-rows: minmax(10px, auto); add min value after measurign 64*64 */
+    /* grid-auto-columns: minmax(10px, auto); same as above */
+}
+
+.pixel-grid {
+    border: 0.5px solid black;
+}
+
+/** input color picker **/
+
+.color-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+input[type="color"] {
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    background: none;
+    border: 0;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+}
+
+::-webkit-color-swatch-wrapper {
+    padding: 0;
+}
+
+::-webkit-color-swatch {
+    border: 0;
+    border-radius: 50%;
+}
+
+::-moz-color-swatch,
+::-moz-focus-inner {
+    border: 0;
+}
+
+::-moz-focus-inner {
+    padding: 0;
+}
+
+/** input color picker **/
+
+input[type='range'] {
+    -webkit-appearance: none;
+    background: black;
+    height: 5px;
+    width: 200px;
+}
+
+input[type='range']::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    background: rgb(252, 252, 252);
+    height: 18px;
+    width: 18px;
+    border-radius: 50%;
+    border: 1px solid black;
+}
