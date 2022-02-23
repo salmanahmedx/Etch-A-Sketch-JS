@@ -19,6 +19,7 @@ let pixels;
 let number = 16;
 let gridNumber = 16 * 16;
 let isMouseDown = false;
+let randomColor;
 
 createGrid(number)
 
@@ -47,12 +48,6 @@ gridContainer.addEventListener("mouseup", function (e) {
     isMouseDown = false;
 })
 
-
-
-
-
-
-
 //create grid function
 
 function createGrid(number) {
@@ -72,18 +67,55 @@ function createGrid(number) {
 let newColor = '#000000';
 
 colorInput.addEventListener("input", function (e) {
+    rainbowBtnClicked = false;
     newColor = e.target.value;
     colorCode.textContent = newColor;
 })
 
 clearBtn.addEventListener("click", function (e) {
+    rainbowBtnClicked = false;
+    if (rainbowBtnClicked === false) { clearInterval(randomNumberGenerator) }
     pixels.forEach(function (pixel) {
         pixel.style.backgroundColor = "white";
     })
 })
 
 eraserBtn.addEventListener("click", function (e) {
+    rainbowBtnClicked = false;
+    if (rainbowBtnClicked === false) { clearInterval(randomNumberGenerator) }
+
     pixels.forEach(function (pixel) {
         newColor = "white";
     })
 })
+// let randomColor;
+let rainbowBtnClicked = false;
+
+rainbowBtn.addEventListener("click", function () {
+    rainbowBtnClicked = true;
+    console.log(rainbowBtnClicked);
+    unlimitedRandomColor()
+})
+
+
+let random1;
+let random2;
+let random3;
+let randomNumberGenerator;
+
+function unlimitedRandomColor() {
+    if (rainbowBtnClicked) {
+        randomNumberGenerator = setInterval(() => {
+            random1 = randomNumber();
+            random2 = randomNumber();
+            random3 = randomNumber();
+            randomColor = `rgb(${random1},${random2},${random3})`;
+            newColor = randomColor;
+            console.log(newColor)
+        }, 1);
+    }
+}
+
+function randomNumber() {
+    return Math.floor(Math.random() * 256)
+}
