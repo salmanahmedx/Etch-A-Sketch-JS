@@ -2,12 +2,17 @@ const gridContainer = document.querySelector(".sketch");
 const gridCount = document.querySelector('.grid-number');
 
 //buttons
+const colorCode = document.querySelector(".color-code");
+const rainbowBtn = document.querySelector(".rainbow");
+const eraserBtn = document.querySelector(".eraser");
+const clearBtn = document.querySelector(".clear");
+
+
+//input and buttons
 const colorInput = document.querySelector(".color");
-const colorCode = document.querySelector(".color-code")
-const rainbowBtn = document.querySelector(".rainbow")
-const eraserBtn = document.querySelector(".eraser")
-const clearBtn = document.querySelector(".clear")
-const gridRange = document.querySelector(".range")
+const gridRange = document.querySelector(".range");
+
+
 
 //creating grid
 let pixels;
@@ -27,27 +32,25 @@ gridRange.addEventListener('input', function () {
 
 gridContainer.addEventListener("mousedown", function () {
     isMouseDown = true;
-    console.log(isMouseDown)
-    if (isMouseDown) {
-        pixels.forEach(function (pixel) {
-            pixel.addEventListener("mousemove", function (e) {
+    pixels.forEach(function (pixel) {
 
-                let currentTarget = e.target;
-
-                currentTarget.style.backgroundColor = "red";
-
-            })
+        pixel.addEventListener("mouseenter", function (e) {
+            let currentTarget = e.target;
+            if (isMouseDown === true) {
+                currentTarget.style.backgroundColor = `${newColor}`;
+            }
         })
-    }
-})
 
-gridContainer.addEventListener("mouseup", function () {
+    })
+})
+gridContainer.addEventListener("mouseup", function (e) {
     isMouseDown = false;
-    console.log(isMouseDown)
 })
-//functions are not updating after value change
 
-//this is true for pixels old value but not working with the updated value
+
+
+
+
 
 
 //create grid function
@@ -64,3 +67,23 @@ function createGrid(number) {
     }
     pixels = document.querySelectorAll(".pixel-grid");
 }
+
+//input update
+let newColor = '#000000';
+
+colorInput.addEventListener("input", function (e) {
+    newColor = e.target.value;
+    colorCode.textContent = newColor;
+})
+
+clearBtn.addEventListener("click", function (e) {
+    pixels.forEach(function (pixel) {
+        pixel.style.backgroundColor = "white";
+    })
+})
+
+eraserBtn.addEventListener("click", function (e) {
+    pixels.forEach(function (pixel) {
+        newColor = "white";
+    })
+})
