@@ -23,6 +23,7 @@ let randomColor;
 
 createGrid(number)
 
+
 gridRange.addEventListener('input', function () {
     gridContainer.innerHTML = "";
     number = gridRange.value;
@@ -75,18 +76,22 @@ colorInput.addEventListener("input", function (e) {
 clearBtn.addEventListener("click", function (e) {
     rainbowBtnClicked = false;
     if (rainbowBtnClicked === false) { clearInterval(randomNumberGenerator) }
+    newColor = "#000000"
     pixels.forEach(function (pixel) {
         pixel.style.backgroundColor = "white";
     })
 })
 
+colorCode.addEventListener("click", function (e) {
+    rainbowBtnClicked = false;
+    if (rainbowBtnClicked === false) { clearInterval(randomNumberGenerator) }
+    newColor = colorCode.textContent;
+})
+
 eraserBtn.addEventListener("click", function (e) {
     rainbowBtnClicked = false;
     if (rainbowBtnClicked === false) { clearInterval(randomNumberGenerator) }
-
-    pixels.forEach(function (pixel) {
-        newColor = "white";
-    })
+    newColor = "white";
 })
 // let randomColor;
 let rainbowBtnClicked = false;
@@ -111,7 +116,6 @@ function unlimitedRandomColor() {
             random3 = randomNumber();
             randomColor = `rgb(${random1},${random2},${random3})`;
             newColor = randomColor;
-            console.log(newColor)
         }, 1);
     }
 }
